@@ -10,17 +10,20 @@ import javax.swing.text.StyleContext;
 
 public class ColorTextPane extends JTextPane {
 
-  public void append(Color c, String s) { // better implementation--uses
-                      // StyleContext
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public void append(Color c, String s) {
     StyleContext sc = StyleContext.getDefaultStyleContext();
     AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
         StyleConstants.Foreground, c);
 
-    int len = getDocument().getLength(); // same value as
-                       // getText().length();
-    setCaretPosition(len); // place caret at the end (with no selection)
+    int len = getDocument().getLength();
+    setCaretPosition(len); 
     setCharacterAttributes(aset, false);
-    replaceSelection(s); // there is no selection, so inserts at caret
+    replaceSelection(s); 
   }
 
 }
