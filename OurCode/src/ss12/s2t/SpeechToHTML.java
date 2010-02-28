@@ -17,11 +17,9 @@ public class SpeechToHTML {
 
     public static void main(String[] args) throws MalformedURLException {
         URL url;
-        if (args.length > 0) {
-            url = new File(args[0]).toURI().toURL();
-        } else {
-            url = SpeechToHTML.class.getResource("SpeechToHTML.config.xml");
-        }
+        
+        url = SpeechToHTML.class.getResource("SpeechToHTML.config.xml");
+       
         
         SickPad pad = new SickPad();
         pad.setVisible(true);
@@ -36,7 +34,7 @@ public class SpeechToHTML {
         Microphone microphone = (Microphone) cm.lookup("microphone");
         microphone.startRecording();
 
-        // loop the recognition until the programm exits.
+        // loop the recognition until the program exits.
         while (true) {
             System.out.println("Start speaking. Press Ctrl-C to quit.\n");
 
