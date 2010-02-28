@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary This page describes the features that have been implemented in this program.
 
 = Introduction =
 
