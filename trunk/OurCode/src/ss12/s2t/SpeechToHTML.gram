@@ -25,6 +25,7 @@
  
  public <save> = command save;
  public <open> = command open;
+ public <exit> = command exit;
  
  //Demo words
  public <demoWords> = (welcome | to | twelve);
