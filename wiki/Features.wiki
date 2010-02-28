@@ -16,23 +16,17 @@ Add your content here.
   * *Automatic Hyperlinks*
   The user is able to easily insert a hyperlink to a site by using a command, removing the necessity of spelling out the actual HTML tag.
 
-  * *Save File*
-  The user is able to save what he has written to a file with the save command.
+  * *Open/Save File*
+  The user is able to save what he has written to a file with the save command, and can reopen that file with another command.
 
   * *Capitalization*
-  asdf
+  The user is able to capitalize a letter by preceding it with a command.
 
   * *Automatic Indentation*
-  asdf
+  Tags will be indented automatically as they nest.
 
-  * *Automatic Highlighting*
-  asdf
+  * *Syntax Highlighting*
+  Tags will be distinguished from surrounding text by identifying colors.
 
   * *Line Numbers*
-  asdf
-
-  * **
-  asdf
-
-  * *Deletion/Backspace*
-  asdf
+  Line numbers are displayed to the left of the code, providing easy perspective to the user.
