@@ -15,7 +15,8 @@ public class SickPad extends JFrame implements ActionListener {
 
 	private JTextArea console = new JTextArea(1, 30);
 	// public JTextArea codeBox = new JTextArea(40, 50);
-	public JTextPane codeBox = new JTextPane();
+	//public JTextPane codeBox = new JTextPane();
+	public ColorTextPane codeBox = new ColorTextPane();
 
 	private JButton clickClickBoom = new JButton("Click Click Boom!");
 
@@ -181,16 +182,20 @@ public class SickPad extends JFrame implements ActionListener {
 
 			if (typeCheck.equals(TAG)) // Check if it is a tag
 			{
-				this.codeBox.setText(codeBoxText
-						+ resolveTag(input.substring(TAG.length(), input
+				//this.codeBox.setText(codeBoxText
+				//		+ resolveTag(input.substring(TAG.length(), input
+				//				.length()), 0));
+				this.codeBox.append(Color.blue, resolveTag(input.substring(TAG.length(), input
 								.length()), 0));
 				return;
 			} else if (typeCheck.equals("end ")) // Check if it is a tag
 			{
-				this.codeBox.setText(codeBoxText
-						+ resolveTag("/"
-								+ input.substring(END.length(), input
-										.length()), 1));
+				//this.codeBox.setText(codeBoxText
+				//		+ resolveTag("/"
+				//				+ input.substring(END.length(), input
+				//						.length()), 1));
+				this.codeBox.append(Color.blue, resolveTag(input.substring(END.length(), input
+						.length()), 0));
 				return;
 			}
 		}
@@ -206,7 +211,8 @@ public class SickPad extends JFrame implements ActionListener {
 			}
 		}
 		// seems like its just the text
-		this.codeBox.setText(codeBoxText + resolveText(input));
+		//this.codeBox.setText(codeBoxText + resolveText(input));
+		this.codeBox.append(Color.BLACK, resolveText(input));
 	}
 
 	public void sound2Text(String input) {
