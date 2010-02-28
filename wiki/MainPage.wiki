@@ -6,7 +6,7 @@ We chose to implement a speech-to-text interface optimized for coding in HTML. H
 
 The second reason is implementation. HTML is a relatively straight-forward language, with a limited vocabulary, which makes implementation simple without requiring a lot of special commands in the speech-to-text. Another advantage is the scalability. The natural progression from HTML would be to implement CSS and Javascript. Both of these languages are relatively simple to implement; Javascript is a simple language and uses dynamic typing, which makes it very easy for a user to learn and use without making many mistakes. CSS would be similarly easy to implement because it has a limited vocabulary.
 
-Our software is based off of the Sphinx-4 speech recognition system (http://cmusphinx.sourceforge.net/sphinx4/), written in Java through a collaboration of Carnegie Mellon, Sun Microsystems, Mitsubishi Electric Research Labs, Hewlett Packard, UCSC, and MIT. We chose Sphinx-4 because our entire team is familiar with Java, which is a major advantage, and Sphinx-4 offered the most flexibility of the speech-to-text suites available open source.
+Our software is based off of the [Sphinx4 Sphinx-4] speech recognition system (http://cmusphinx.sourceforge.net/sphinx4/), written in Java through a collaboration of Carnegie Mellon, Sun Microsystems, Mitsubishi Electric Research Labs, Hewlett Packard, UCSC, and MIT. We chose Sphinx-4 because our entire team is familiar with Java, which is a major advantage, and Sphinx-4 offered the most flexibility of the speech-to-text suites available open source.
 
 On top of the Sphinx-4 system we have implemented our own Java application.
 
