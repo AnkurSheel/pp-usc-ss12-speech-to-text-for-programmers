@@ -1,4 +1,4 @@
-#summary The commands that are supported. They must be preceded by {{{command}}}.
+#summary The commands that are supported. They must be preceded by the command keyword.
 
 = Commands =
 
