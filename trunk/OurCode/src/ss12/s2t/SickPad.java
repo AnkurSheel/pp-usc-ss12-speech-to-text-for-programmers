@@ -1,4 +1,5 @@
 package ss12.s2t;
+
 //ankur
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -46,6 +47,9 @@ public class SickPad extends JFrame implements ActionListener {
 	private JButton clickClickBoom = new JButton("Click Click Boom!");
 
 	private boolean isLastInputText = false;
+	private boolean isSelectMode = false;
+	private int selectStart = 0;
+	private int selectEnd = 0;
 
 	// NEW DATA
 	ArrayList<DevStruct> StringRecords = new ArrayList<DevStruct>();
@@ -65,8 +69,9 @@ public class SickPad extends JFrame implements ActionListener {
 		// operation (exit when it
 		// gets closed)
 		this.codeBox.setFont(new Font("Century Gothic", Font.BOLD, 12));
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		
+		scrollPane
+				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
 		clickClickBoom.addActionListener(this);
 
 		codeBox.setAutoscrolls(true);
@@ -201,13 +206,24 @@ public class SickPad extends JFrame implements ActionListener {
 		codeBox.setText("");
 		codeBox.Reset();
 		for (int i = 0; i < StringRecords.size(); i++) {
-			codeBox.append(StringRecords.get(i).key, StringRecords.get(i).value);
+			codeBox
+					.append(StringRecords.get(i).key,
+							StringRecords.get(i).value);
 		}
 		if (cursorPosition > 1) {
-				codeBox.setCaretPosition(cursorPosition);
+			codeBox.setCaretPosition(cursorPosition);
+		}
+
+		if (this.isSelectMode == true) {
+			if (this.selectStart < this.codeBox.getCaretPosition()) {
+				this.codeBox.select(this.selectStart, this.codeBox
+						.getCaretPosition());
+			} else {
+				this.codeBox.select(this.codeBox.getCaretPosition(),
+						this.selectStart);
 			}
-			
-		
+		}
+
 	}
 
 	public void processRawText(String input) {
@@ -221,8 +237,7 @@ public class SickPad extends JFrame implements ActionListener {
 			if (typeCheck.equals(TAG)) // Check if it is a tag
 			{
 				String text = input.substring(TAG.length(), input.length());
-				if(text.equals("new"))
-				{
+				if (text.equals("new")) {
 					text = "html";
 				} else if (text.equals("ordered"))
 				{
@@ -243,7 +258,8 @@ public class SickPad extends JFrame implements ActionListener {
 				{
 					text = "td";
 				}
-				this.StringRecords.add(new DevStruct("TAG",resolveTag(text, 0)));
+				this.StringRecords
+						.add(new DevStruct("TAG", resolveTag(text, 0)));
 				return;
 			}
 		}
@@ -252,8 +268,7 @@ public class SickPad extends JFrame implements ActionListener {
 			if (typeCheck.equals(END)) // Check if it is a tag
 			{
 				String text = input.substring(END.length(), input.length());
-				if(text.equals("new"))
-				{
+				if (text.equals("new")) {
 					text = "html";
 				} else if (text.equals("ordered"))
 				{
@@ -276,26 +291,28 @@ public class SickPad extends JFrame implements ActionListener {
 				{
 					text = "td";
 				}
-				
-				this.StringRecords.add(new DevStruct("END",resolveTag("/"+text, 1)));
+
+				this.StringRecords.add(new DevStruct("END", resolveTag("/"
+						+ text, 1)));
 				return;
 			}
 		}
 
 		if (input.length() > CAPITAL.length()) {
 			typeCheck = input.substring(0, CAPITAL.length());
-			
-			if(typeCheck.equals(CAPITAL)) {
-				this.StringRecords.add(new DevStruct("TXT", resolveText(input.substring(CAPITAL.length()).toUpperCase())));
+
+			if (typeCheck.equals(CAPITAL)) {
+				this.StringRecords.add(new DevStruct("TXT", resolveText(input
+						.substring(CAPITAL.length()).toUpperCase())));
 				return;
 			}
 		}
-		
+
 		if (input.equals(SPACE)) {
 			this.StringRecords.add(new DevStruct("TXT", resolveText(" ")));
 			return;
 		}
-		
+
 		// check for command
 		if (input.length() > COMMAND.length()) {
 			typeCheck = input.substring(0, COMMAND.length());
@@ -310,8 +327,9 @@ public class SickPad extends JFrame implements ActionListener {
 	}
 
 	public void sound2Text(String input) {
-		/*if(true)
-		return;*/
+		/*
+		 * if(true) return;
+		 */
 		processRawText(input);
 		displayText();
 	}
@@ -322,7 +340,7 @@ public class SickPad extends JFrame implements ActionListener {
 		} else if (cmd.equals("down")) {
 
 		} else if (cmd.equals("left")) {
-			displayText();	
+			displayText();
 			if (codeBox.getCaretPosition() > 1) {
 				cursorPosition = codeBox.getCaretPosition() - 1;
 				codeBox.setCaretPosition(cursorPosition - 1);
@@ -331,8 +349,14 @@ public class SickPad extends JFrame implements ActionListener {
 			displayText();
 			cursorPosition = codeBox.getCaretPosition() + 1;
 			codeBox.setCaretPosition(cursorPosition + 1);
-		} 
-		else if (cmd.equals("clear")) {
+		} else if (cmd.equals("select")) {
+			if (this.isSelectMode == false) {
+				this.isSelectMode = true;
+				this.selectStart = this.codeBox.getCaretPosition();
+			}
+			else
+				this.isSelectMode = false;
+		} else if (cmd.equals("clear")) {
 			this.codeBox.setText("");
 			this.StringRecords.clear();
 		}
@@ -348,17 +372,13 @@ public class SickPad extends JFrame implements ActionListener {
 		{
 			String text = this.codeBox.getText();
 			int index = text.lastIndexOf('\r');
-			if(index > -1)
-			{
-				text = text.substring(0,index);
-			}
-			else
-			{
+			if (index > -1) {
+				text = text.substring(0, index);
+			} else {
 				text = "";
 			}
 			this.codeBox.setText(text);
-		}
-		else if (cmd.equals("open")){
+		} else if (cmd.equals("open")) {
 			JFileChooser open = new JFileChooser(); // open up a file chooser (a
 			// dialog for the user to
 			// browse files to open)
@@ -386,9 +406,8 @@ public class SickPad extends JFrame implements ActionListener {
 					System.out.println(ex.getMessage());
 				}
 			}
-			
-		}
-		else if(cmd.equals("save")){
+
+		} else if (cmd.equals("save")) {
 			JFileChooser save = new JFileChooser(); // again, open a file
 			// chooser
 			int option = save.showSaveDialog(this); // similar to the open file,
@@ -409,8 +428,7 @@ public class SickPad extends JFrame implements ActionListener {
 					System.out.println(ex.getMessage());
 				}
 			}
-		}
-		else if (cmd.equals("exit")){
+		} else if (cmd.equals("exit")) {
 			System.exit(1);
 		}
 	}
@@ -419,7 +437,7 @@ public class SickPad extends JFrame implements ActionListener {
 		if (this.isLastInputText == false) {
 			this.isLastInputText = true;
 		} else {
-			if(text.length() > 1) {
+			if (text.length() > 1) {
 				text = text + " ";
 			}
 		}
