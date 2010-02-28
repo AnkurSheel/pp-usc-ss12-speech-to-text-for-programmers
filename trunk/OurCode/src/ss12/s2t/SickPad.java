@@ -1,16 +1,26 @@
 package ss12.s2t;
 
-import javax.swing.*;
-
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.MenuShortcut;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
-import java.io.*;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class SickPad extends JFrame implements ActionListener {
 
@@ -179,11 +189,13 @@ public class SickPad extends JFrame implements ActionListener {
 			processRawText(input);
 
 			codeBox.setText("");
+			codeBox.Reset();
 			for (int i = 0; i < StringRecords.size(); i++) {
-				codeBox.append(Color.BLACK, StringRecords.get(i).value);
+				codeBox.append(StringRecords.get(i).key, StringRecords.get(i).value);
 				if (cursorPosition > 1) {
 					codeBox.setCaretPosition(cursorPosition);
 				}
+				
 			}
 		}
 	}
@@ -198,8 +210,12 @@ public class SickPad extends JFrame implements ActionListener {
 			typeCheck = input.substring(0, TAG.length());
 			if (typeCheck.equals(TAG)) // Check if it is a tag
 			{
-				this.StringRecords.add(new DevStruct("TAG", resolveTag(input
-						.substring(TAG.length(), input.length()), 0)));
+				String text = input.substring(TAG.length(), input.length());
+				if(text.equals("new"))
+				{
+					text = "html";
+				}
+				this.StringRecords.add(new DevStruct("TAG",resolveTag(text, 0)));
 				return;
 			}
 		}
@@ -207,8 +223,13 @@ public class SickPad extends JFrame implements ActionListener {
 			typeCheck = input.substring(0, END.length());
 			if (typeCheck.equals("end ")) // Check if it is a tag
 			{
-				this.StringRecords.add(new DevStruct("END", resolveTag("/"
-						+ input.substring(END.length(), input.length()), 1)));
+				String text = input.substring(END.length(), input.length());
+				if(text.equals("new"))
+				{
+					text = "html";
+				}
+				
+				this.StringRecords.add(new DevStruct("END",resolveTag("/"+text, 1)));
 				return;
 			}
 		}
@@ -229,8 +250,9 @@ public class SickPad extends JFrame implements ActionListener {
 	public void sound2Text(String input) {
 		processRawText(input);
 		codeBox.setText("");
+		codeBox.Reset();
 		for (int i = 0; i < StringRecords.size(); i++) {
-			codeBox.append(Color.BLACK, StringRecords.get(i).value);
+			codeBox.append(StringRecords.get(i).key, StringRecords.get(i).value);
 			if (cursorPosition > 1) {
 				codeBox.setCaretPosition(cursorPosition);
 			}
@@ -252,6 +274,26 @@ public class SickPad extends JFrame implements ActionListener {
 			codeBox.setCaretPosition(codeBox.getCaretPosition() + 1);
 		} else if (cmd.equals("clear")) {
 			this.codeBox.setText("");
+		}
+		else if (cmd.equals("back")) 
+		{
+			String text = this.codeBox.getText();
+			text = text.substring(0,text.length()-1);
+			this.codeBox.setText(text);
+		}
+		else if (cmd.equals("delete")) 
+		{
+			String text = this.codeBox.getText();
+			int index = text.lastIndexOf('\r');
+			if(index > -1)
+			{
+				text = text.substring(0,index);
+			}
+			else
+			{
+				text = "";
+			}
+			this.codeBox.setText(text);
 		}
 	}
 
