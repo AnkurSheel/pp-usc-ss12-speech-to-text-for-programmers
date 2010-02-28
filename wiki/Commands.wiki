@@ -4,6 +4,9 @@
 
   * Selection
     The commands {{{begin select}}} and {{{end select}}}.
+
+  * Color
+    The command {{{flip}}} will reverse the colors of the background and text.
   
   * Direction
     Move the caret either {{{up}}}, {{{down}}}, {{{left}}}, or {{{right}}}.
