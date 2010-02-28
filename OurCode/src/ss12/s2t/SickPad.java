@@ -21,6 +21,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class SickPad extends JFrame implements ActionListener {
 
@@ -40,7 +42,7 @@ public class SickPad extends JFrame implements ActionListener {
 	// public JTextPane codeBox = new JTextPane();
 	private JPanel pan = new JPanel();
 	public ColorTextPane codeBox = new ColorTextPane();
-
+	public JScrollPane scrollPane = new JScrollPane(codeBox);
 	private JButton clickClickBoom = new JButton("Click Click Boom!");
 
 	private boolean isLastInputText = false;
@@ -63,7 +65,8 @@ public class SickPad extends JFrame implements ActionListener {
 		// operation (exit when it
 		// gets closed)
 		this.codeBox.setFont(new Font("Century Gothic", Font.BOLD, 12));
-
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
 		clickClickBoom.addActionListener(this);
 
 		codeBox.setAutoscrolls(true);
@@ -77,7 +80,7 @@ public class SickPad extends JFrame implements ActionListener {
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().setBounds(0, 0, 800, 600);
 		this.getContentPane().setBackground(Color.GRAY);
-		this.getContentPane().add(codeBox, BorderLayout.CENTER);
+		this.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		this.getContentPane().add(pan, BorderLayout.PAGE_END);
 
 		// add our menu bar into the GUI
@@ -200,9 +203,9 @@ public class SickPad extends JFrame implements ActionListener {
 		for (int i = 0; i < StringRecords.size(); i++) {
 			codeBox.append(StringRecords.get(i).key, StringRecords.get(i).value);
 		}
-			//if (cursorPosition > 1) {
-			//	codeBox.setCaretPosition(cursorPosition);
-			//}
+			if (cursorPosition > 1) {
+				codeBox.setCaretPosition(cursorPosition);
+			}
 			
 		
 	}
@@ -290,7 +293,8 @@ public class SickPad extends JFrame implements ActionListener {
 			displayText();
 			cursorPosition = codeBox.getCaretPosition() + 1;
 			codeBox.setCaretPosition(cursorPosition + 1);
-		} else if (cmd.equals("clear")) {
+		} 
+		else if (cmd.equals("clear")) {
 			this.codeBox.setText("");
 			this.StringRecords.clear();
 		}
@@ -311,6 +315,61 @@ public class SickPad extends JFrame implements ActionListener {
 				text = "";
 			}
 			this.codeBox.setText(text);
+		}
+		else if (cmd.equals("open")){
+			JFileChooser open = new JFileChooser(); // open up a file chooser (a
+			// dialog for the user to
+			// browse files to open)
+			int option = open.showOpenDialog(this); // get the option that the
+			// user selected (approve or
+			// cancel)
+			// NOTE: because we are OPENing a file, we call showOpenDialog~
+			// if the user clicked OK, we have "APPROVE_OPTION"
+			// so we want to open the file
+			if (option == JFileChooser.APPROVE_OPTION) {
+				this.codeBox.setText(""); // clear the TextArea before applying
+				// the file contents
+				try {
+					// create a scanner to read the file
+					// (getSelectedFile().getPath() will get the path to the
+					// file)
+					Scanner scan = new Scanner(new FileReader(open
+							.getSelectedFile().getPath()));
+					while (scan.hasNext())
+						// while there's still something to read
+						this.codeBox.setText(this.codeBox.getText()
+								+ scan.nextLine() + "\n");
+				} catch (Exception ex) { // catch any exceptions, and...
+					// ...write to the debug console
+					System.out.println(ex.getMessage());
+				}
+			}
+			
+		}
+		else if(cmd.equals("save")){
+			JFileChooser save = new JFileChooser(); // again, open a file
+			// chooser
+			int option = save.showSaveDialog(this); // similar to the open file,
+			// only this time we call
+			// showSaveDialog instead of showOpenDialog
+			// if the user clicked OK (and not cancel)
+			if (option == JFileChooser.APPROVE_OPTION) {
+				try {
+					// create a buffered writer to write to a file
+					BufferedWriter out = new BufferedWriter(new FileWriter(save
+							.getSelectedFile().getPath()));
+					out.write(this.codeBox.getText()); // write the contents of
+					// the TextArea to the
+					// file
+					out.close(); // close the file stream
+				} catch (Exception ex) { // again, catch any exceptions and...
+					// ...write to the debug console
+					System.out.println(ex.getMessage());
+				}
+			}
+		}
+		else if (cmd.equals("exit")){
+			System.exit(1);
 		}
 	}
 
