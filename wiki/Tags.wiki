@@ -1,0 +1,33 @@
+#summary The tags that are supported.
+
+= Tags =
+
+  * New
+  Generates the <HTML> or </HTML> tags.
+  
+  * Head
+  Generates the <HEAD> or </HEAD> tags.
+
+  * Title
+  Generates the <TITLE> or </TITLE> tags.
+
+  * Body
+  Generates the <BODY> or </BODY> tags.
+
+  * Break
+  Generates the <BR> or </BR> tags.
+
+  * Bold
+  Generates the <BOLD> or </BOLD> tags.
+
+  * Center
+  Generates the <CENTER> or </CENTER> tags.
+
+  * Ordered
+
+
+  * Item
+
+
+  * Paragraph
+  Generates the <P> or </P> tags.
