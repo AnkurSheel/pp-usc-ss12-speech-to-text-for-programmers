@@ -17,7 +17,8 @@ public class ColorTextPane extends JTextPane {
 	Style mainStyle;
 	Style defaultStyle;
 	int TagCount;
-
+	int LineNo;
+	
 	public ColorTextPane() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -44,6 +45,7 @@ public class ColorTextPane extends JTextPane {
 
 	public void append(String key, String Value) {
 		if (key.equalsIgnoreCase("TAG") || key.equalsIgnoreCase("END")) {
+			LineNo++;
 			// StyleContext sc = StyleContext.getDefaultStyleContext();
 			// AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
 			// StyleConstants.Foreground, Color.BLUE);
@@ -51,7 +53,7 @@ public class ColorTextPane extends JTextPane {
 				TagCount--;
 			}
 
-			String indentString = "\r\n";
+			String indentString = "\r\n"+LineNo;
 			for (int i = 0; i < TagCount; i++) {
 				indentString += "\t";
 			}
@@ -69,12 +71,14 @@ public class ColorTextPane extends JTextPane {
 		}
 		if (key.equalsIgnoreCase("TAG")) {
 			TagCount++;
+		
 		}
 
 	}
 
 	public void Reset() {
 		TagCount = 0;
+		LineNo = 0;
 	}
 	// StyleContext sc = StyleContext.getDefaultStyleContext();
 	// AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
