@@ -1,15 +1,18 @@
-#summary This page provide a description of the grammar that the user follows when running the program.
+#summary The commands that are supported. They must be preceded by {{{command}}}.
 
-= Introduction =
+= Commands =
 
-
-= High-Level Commands =
-  * Tag
-  The {{{tag}}} command prefaces the creation of a tag. It must be immediately followed by one of the [Tags acceptable tags].
-
-  * End
-  The {{{end}}} command follows the completion of a section. It specifies that the tag indicating the end of the section should be entered. It must be immediately followed by one of the [Tags acceptable tags].
+  * Selection
+  The commands {{{begin select}}} and {{{end select}}}.
   
+  * Direction
+  Move the caret either {{{up}}}, {{{down}}}, {{{left}}}, or {{{right}}}.
 
-  * Command
-  The {{{command}}} command must precede one of the [Commands acceptable commands].
+  * Space
+  Adds a {{{space}}}.
+
+  * Open/Save
+  Will {{{open}}} a saved file or {{{save}}} what is currently displayed.
+
+  * Exit
+  Will {{{exit}}} the program.
