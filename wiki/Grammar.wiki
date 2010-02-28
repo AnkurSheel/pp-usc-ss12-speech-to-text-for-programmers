@@ -2,9 +2,9 @@
 
 = Interaction =
 
-The primary mode of interacting with the program is by speech. In HTML, scripting is achieved through the use of tags, such as <HTML> or <P>. These tags are opened by the command {{{open}}} followed by one of the [Tags acceptable tags].
+The primary mode of interacting with the program is by speech. In HTML, scripting is achieved through the use of tags, such as {{{<HTML>}}} or {{{<P>}}}. These tags are opened by the command {{{open}}} followed by one of the [Tags acceptable tags].
 
-Once a tag is open, another tag may be opened to nest the tags. For example a <BOLD> tag may be nested inside an <OL> tag.
+Once a tag is open, another tag may be opened to nest the tags. For example a {{{<BOLD>}}} tag may be nested inside an {{{<OL>}}} tag.
 
 When inside a tag, the actual text that will be displayed is indicated by the user by spelling the contents letter by letter. A letter preceded by {{{capital}}} will be capitalized. When a space is desired, it is indicated by saying {{{command space}}}.
 
