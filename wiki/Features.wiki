@@ -1,4 +1,4 @@
-#summary This page lists the features implemented by the program.
+#summary This page lists the features implemented.
 = Feature List =
 
   * *Up/Down Navigation*
