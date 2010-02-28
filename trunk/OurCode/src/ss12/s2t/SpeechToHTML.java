@@ -23,6 +23,9 @@ public class SpeechToHTML {
         } else {
             url = SpeechToHTML.class.getResource("SpeechToHTML.config.xml");
         }
+        
+        SickPad pad = new SickPad();
+        pad.setVisible(true);
 
         ConfigurationManager cm = new ConfigurationManager(url);
 
@@ -45,6 +48,7 @@ public class SpeechToHTML {
             if (result != null) {
                 String resultText = result.getBestResultNoFiller();
                 System.out.println("You said: " + resultText + "\n");
+                pad.sound2Text(resultText);
             } else {
                 System.out.println("I can't hear what you said.\n");
             }
