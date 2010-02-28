@@ -3,31 +3,31 @@
 = Tags =
 
   * New
-  Generates the {{{<HTML>}}} or {{{</HTML>}}} tags.
+    Generates the {{{<HTML>}}} or {{{</HTML>}}} tags.
   
   * Head
-  Generates the {{{<HEAD>}}} or {{{</HEAD>}}} tags.
+    Generates the {{{<HEAD>}}} or {{{</HEAD>}}} tags.
 
   * Title
-  Generates the {{{<TITLE>}}} or {{{</TITLE>}}} tags.
+    Generates the {{{<TITLE>}}} or {{{</TITLE>}}} tags.
 
   * Body
-  Generates the {{{<BODY>}}} or {{{</BODY>}}} tags.
+    Generates the {{{<BODY>}}} or {{{</BODY>}}} tags.
 
   * Break
-  Generates the {{{<BR />}}} tag.
+    Generates the {{{<BR />}}} tag.
 
   * Bold
-  Generates the {{{<BOLD>}}} or {{{</BOLD>}}} tags.
+    Generates the {{{<BOLD>}}} or {{{</BOLD>}}} tags.
 
   * Center
-  Generates the {{{<CENTER>}}} or {{{</CENTER>}}} tags.
+    Generates the {{{<CENTER>}}} or {{{</CENTER>}}} tags.
 
   * Ordered
-  Generates the {{{<OL>}}} or {{{</OL>}}} tags.
+    Generates the {{{<OL>}}} or {{{</OL>}}} tags.
 
   * Item
-  Generates the {{{<LI>}}} or {{{</LI>}}} tags.
+    Generates the {{{<LI>}}} or {{{</LI>}}} tags.
 
   * Paragraph
-  Generates the {{{<P>}}} or {{{</P>}}} tags.
+    Generates the {{{<P>}}} or {{{</P>}}} tags.
