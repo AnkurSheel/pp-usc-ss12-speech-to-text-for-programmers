@@ -24,10 +24,10 @@
   Generates the {{{<CENTER>}}} or {{{</CENTER>}}} tags.
 
   * Ordered
-
+  Generates the {{{<OL>}}} or {{{</OL>}}} tags.
 
   * Item
-
+  Generates the {{{<LI>}}} or {{{</LI>}}} tags.
 
   * Paragraph
   Generates the {{{<P>}}} or {{{</P>}}} tags.
