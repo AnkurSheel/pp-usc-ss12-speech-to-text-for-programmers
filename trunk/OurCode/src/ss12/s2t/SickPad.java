@@ -318,7 +318,7 @@ public class SickPad extends JFrame implements ActionListener {
 			this.isLastInputText = true;
 		} else {
 			if(text.length() > 1) {
-				text = " " + text;
+				text = text + " ";
 			}
 		}
 		return text;
