@@ -1,13 +1,18 @@
-#summary One-sentence summary of this page.
+#summary The commands that are supported. They must be preceded by the command keyword.
 
-= Introduction =
+= Commands =
 
-Add your content here.
+  * Selection
+    The commands {{{begin select}}} and {{{end select}}}.
+  
+  * Direction
+    Move the caret either {{{up}}}, {{{down}}}, {{{left}}}, or {{{right}}}.
 
+  * Space
+    Adds a {{{space}}}.
 
-= Details =
+  * Open/Save
+    Will {{{open}}} a saved file or {{{save}}} what is currently displayed.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * Exit
+    Will {{{exit}}} the program.
