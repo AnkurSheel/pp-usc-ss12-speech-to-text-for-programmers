@@ -58,7 +58,7 @@ public class ColorTextPane extends JTextPane {
 				indentString += "\t";
 			}
 			Value = indentString + Value;
-			System.out.println(TagCount + " " + Value);
+			//System.out.println(TagCount + " " + Value);
 			int len = getDocument().getLength();
 			setCaretPosition(len);
 			setCharacterAttributes(heading2Style, false);
