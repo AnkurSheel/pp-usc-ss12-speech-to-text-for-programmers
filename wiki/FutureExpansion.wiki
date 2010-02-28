@@ -1,13 +1,10 @@
 #summary This page describes ways in which is project could be expanded to augment functionality.
 
-= Introduction =
+= Expansions =
+
+This program was built using the [Sphinx4 Sphinx-4] concept of grammar files that contain pre-defined commands that are then applied by the user to 
 
 Add your content here.
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Modularity of grammar files
+Apply by language
