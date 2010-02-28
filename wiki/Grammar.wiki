@@ -1,13 +1,15 @@
 #summary This page describes the grammar that is necessary for interaction with the program.
 
-= Introduction =
+= Interaction =
 
-Add your content here.
+The primary mode of interacting with the program is by speech. In HTML, scripting is achieved through the use of tags, such as <HTML> or <P>. These tags are opened by the command {{{open}}} followed by one of the [Tags acceptable tags].
 
+Once a tag is open, another tag may be opened to nest the tags. For example a <BOLD> tag may be nested inside an <OL> tag.
 
-= Details =
+When inside a tag, the actual text that will be displayed is indicated by the user by spelling the contents letter by letter. A letter preceded by {{{capital}}} will be capitalized. When a space is desired, it is indicated by saying {{{command space}}}.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+When a tag is complete, the end tag is indicated by saying {{{finish}}} followed by the desired [Tags acceptable tag].
+
+There are also some words that are pre-set in the grammar of the program, which may be printed by simply saying them.
+
+Commands, which are listed [Commands here], must be preceded by the {{{command}}} keyword.
