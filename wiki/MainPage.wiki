@@ -1,5 +1,3 @@
-#summary This project facilitates speech-based coding in HTML.
-
 = Introduction =
 
 Our task for the 2010 SS12 competition was to implement speech-to-text software optimized for programmers.
