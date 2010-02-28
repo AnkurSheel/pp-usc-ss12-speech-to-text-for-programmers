@@ -1,13 +1,9 @@
-#summary One-sentence summary of this page.
+#summary This page provides basic information on Sphinx-4.
 
 = Introduction =
 
-Add your content here.
+Sphinx-4 was developed through the collaboration of individuals and groups at Carnegie Mellon University, Sun Microsystems Laboratories, Mitsubishi Electric Research Labs, and Hewlett Packard. Contributors also included individuals from UCSC and MIT.
 
+Sphinx-4 is a flexible system for integrating various recognition tasks involving the perception of speech. It supports standardized forms of language model architecture and acoustic model architecture, including the Java Speech API Grammar Format (JSGF) from the Java Speech API.
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+The main page for the Sphinx project may be found [http://cmusphinx.sourceforge.net/sphinx4/ here].
