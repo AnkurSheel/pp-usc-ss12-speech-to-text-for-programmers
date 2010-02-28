@@ -7,8 +7,8 @@
  grammar html;
  
  <tag> = (new | head | title | body | break | bold | center | ordered | item | paragraph | table | row | cell );
- public <newtag> = tag <tag>;
- public <endtag> = end <tag>;
+ public <newtag> = open <tag>;
+ public <endtag> = finish <tag>;
  public <delete> = command delete;
  public <newline> = command new line;
  public <linktag> = tag link <link> <text>;
