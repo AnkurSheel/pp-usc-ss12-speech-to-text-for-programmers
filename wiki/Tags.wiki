@@ -1,4 +1,4 @@
-#summary The tags that are supported.
+#summary The HTML tags that are supported.
 
 = Tags =
 
