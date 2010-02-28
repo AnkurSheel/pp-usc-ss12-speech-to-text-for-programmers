@@ -32,7 +32,7 @@ public class SickPad extends JFrame implements ActionListener {
 	private final String TAG = "tag ";
 	private final String COMMAND = "command ";
 	private final String END = "end ";
-	private final String CAPITAL = "capital";
+	private final String CAPITAL = "capital ";
 
 	private JTextArea console = new JTextArea(1, 30);
 	// public JTextArea codeBox = new JTextArea(40, 50);
