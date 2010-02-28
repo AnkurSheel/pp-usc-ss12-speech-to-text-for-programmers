@@ -6,11 +6,14 @@
  
  grammar html;
  
- <tag> = (new | head | title | body | break | bold | center | ordered | item | paragraph | table | row | cell);
+ <tag> = (new | head | title | body | break | bold | center | ordered | item | paragraph | table | row | cell );
  public <newtag> = tag <tag>;
  public <endtag> = end <tag>;
  public <delete> = command delete;
  public <newline> = command new line;
+ public <linktag> = tag link <link> <text>;
+ <link> = (yahoo | google | project possibility | you tube );
+ <text> = (my link | website);
  
  public <letters> = [ capital ] (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z);
   
