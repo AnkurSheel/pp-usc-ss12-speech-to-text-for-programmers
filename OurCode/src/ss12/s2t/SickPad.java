@@ -203,7 +203,7 @@ public class SickPad extends JFrame implements ActionListener {
 		for (int i = 0; i < StringRecords.size(); i++) {
 			codeBox.append(StringRecords.get(i).key, StringRecords.get(i).value);
 		}
-			if (cursorPosition > 1) {
+		if (cursorPosition > 1) {
 				codeBox.setCaretPosition(cursorPosition);
 			}
 			
@@ -338,7 +338,11 @@ public class SickPad extends JFrame implements ActionListener {
 		}
 		else if (cmd.equals("back")) 
 		{
-			this.StringRecords.remove(StringRecords.size()-1);
+			if(StringRecords.size()>0)
+			{
+				this.StringRecords.remove(StringRecords.size()-1);	
+			}
+			
 		}
 		else if (cmd.equals("delete")) 
 		{
