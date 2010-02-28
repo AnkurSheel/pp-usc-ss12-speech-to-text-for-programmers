@@ -1,4 +1,4 @@
-#summary The HTML tags that are supported. Depending on whether they are preceded by tag or end, they will appear appropriately.
+#summary The HTML tags that are supported. Depending on whether they are preceded by tag or finish, they will appear appropriately.
 
 = Tags =
 
