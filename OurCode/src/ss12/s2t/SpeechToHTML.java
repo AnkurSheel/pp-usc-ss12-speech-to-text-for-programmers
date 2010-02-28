@@ -11,8 +11,7 @@ import java.net.URL;
 
 
 /**
- * A simple HelloDigits demo showing a simple speech application built using Sphinx-4. This application uses the
- * Sphinx-4 endpointer, which automatically segments incoming audio into utterances and silences.
+ * SS12 Speech-to-Text for Programmers
  */
 public class SpeechToHTML {
 
@@ -36,8 +35,6 @@ public class SpeechToHTML {
         // start the microphone
         Microphone microphone = (Microphone) cm.lookup("microphone");
         microphone.startRecording();
-
-        System.out.println("Say any digit(s): e.g. \"two oh oh four\" , or \"three six five\".");
 
         // loop the recognition until the programm exits.
         while (true) {
