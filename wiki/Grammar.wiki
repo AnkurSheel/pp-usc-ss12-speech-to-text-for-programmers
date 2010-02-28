@@ -8,7 +8,7 @@
   The tag command prefaces the creation of a tag. It must be immediately followed by one of the [Tags acceptable tags].
 
   * End
-  The end command follows the completion of a section. It specifies that the tag indicating the end of the section should be entered. It must be immediately followed by one of the [Tag acceptable tags].
+  The end command follows the completion of a section. It specifies that the tag indicating the end of the section should be entered. It must be immediately followed by one of the [Tags acceptable tags].
   
 
   * Command
