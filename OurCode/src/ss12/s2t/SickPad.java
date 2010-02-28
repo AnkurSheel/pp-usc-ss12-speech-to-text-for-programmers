@@ -32,6 +32,7 @@ public class SickPad extends JFrame implements ActionListener {
 	private final String TAG = "tag ";
 	private final String COMMAND = "command ";
 	private final String END = "end ";
+	private final String CAPITAL = "capital";
 
 	private JTextArea console = new JTextArea(1, 30);
 	// public JTextArea codeBox = new JTextArea(40, 50);
@@ -234,6 +235,15 @@ public class SickPad extends JFrame implements ActionListener {
 			}
 		}
 
+		if (input.length() > CAPITAL.length()) {
+			typeCheck = input.substring(0, CAPITAL.length());
+			
+			if(typeCheck.equals(CAPITAL)) {
+				this.StringRecords.add(new DevStruct("TXT", resolveText(input.substring(CAPITAL.length()).toUpperCase())));
+				return;
+			}
+		}
+		
 		// check for command
 		if (input.length() > COMMAND.length()) {
 			typeCheck = input.substring(0, COMMAND.length());
