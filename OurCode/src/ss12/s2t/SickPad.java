@@ -33,6 +33,7 @@ public class SickPad extends JFrame implements ActionListener {
 		this.getContentPane().add(console);		
 		clickClickBoom.addActionListener(this);
 		this.getContentPane().add(clickClickBoom);
+		codeBox.setTabSize(3);
 		this.getContentPane().add(codeBox);
 
 		// add our menu bar into the GUI
