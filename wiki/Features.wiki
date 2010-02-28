@@ -21,6 +21,3 @@
 
   * *Syntax Highlighting*
     Tags will be distinguished from surrounding text by identifying colors.
-
-  * *Line Numbers*
-    Line numbers are displayed to the left of the code, providing easy perspective to the user.
