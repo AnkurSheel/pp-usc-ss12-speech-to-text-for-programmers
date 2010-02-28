@@ -15,7 +15,7 @@
   Generates the {{{<BODY>}}} or {{{</BODY>}}} tags.
 
   * Break
-  Generates the {{{<BR>}}} or {{{</BR>}}} tags.
+  Generates the {{{<BR />}}} tag.
 
   * Bold
   Generates the {{{<BOLD>}}} or {{{</BOLD>}}} tags.
