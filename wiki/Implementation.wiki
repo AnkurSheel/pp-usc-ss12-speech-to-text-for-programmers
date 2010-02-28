@@ -1,13 +1,7 @@
 #summary This page describes the method by which this program was implemented.
 
-= Introduction =
+= System Walkthrough =
 
-Add your content here.
+The program is event-driven, with the event being voice recognition. There is an infinite loop that is picking up and checking sound from the microphone. When the loop identifies something that is present in the [Grammar grammar], it passes it to a class that check how that command is to be applied.
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Once the command is received by the back-end, the program decides what formatting is to be done. Formatting is pre-defined. If it is a tag, for example, indentation is handled by the system. Implicit punctuation is implemented at this leve; that is, what is expected by the user is added automatically by the system. 
