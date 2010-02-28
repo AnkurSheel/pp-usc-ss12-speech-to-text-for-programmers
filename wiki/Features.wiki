@@ -7,6 +7,32 @@ Add your content here.
 
 = Details =
 
-*Navigation
+  * *Up/Down Navigation*
+  The user is able to move the caret up and down through speech-based commands.
 
-*Hyperlink
+  * *Deletion/Backspace*
+  The user is able to delete text that has been typed or an entire tag (as applicable) by using the delete command.
+
+  * *Automatic Hyperlinks*
+  The user is able to easily insert a hyperlink to a site by using a command, removing the necessity of spelling out the actual HTML tag.
+
+  * *Save File*
+  The user is able to save what he has written to a file with the save command.
+
+  * *Capitalization*
+  asdf
+
+  * *Automatic Indentation*
+  asdf
+
+  * *Automatic Highlighting*
+  asdf
+
+  * *Line Numbers*
+  asdf
+
+  * **
+  asdf
+
+  * *Deletion/Backspace*
+  asdf
