@@ -33,6 +33,7 @@ public class SickPad extends JFrame implements ActionListener {
 	private final String COMMAND = "command ";
 	private final String END = "end ";
 	private final String CAPITAL = "capital ";
+	private final String SPACE = "command space";
 
 	private JTextArea console = new JTextArea(1, 30);
 	// public JTextArea codeBox = new JTextArea(40, 50);
@@ -244,6 +245,11 @@ public class SickPad extends JFrame implements ActionListener {
 			}
 		}
 		
+		if (input.equals(SPACE)) {
+			this.StringRecords.add(new DevStruct("TXT", resolveText(" ")));
+			return;
+		}
+		
 		// check for command
 		if (input.length() > COMMAND.length()) {
 			typeCheck = input.substring(0, COMMAND.length());
@@ -311,7 +317,9 @@ public class SickPad extends JFrame implements ActionListener {
 		if (this.isLastInputText == false) {
 			this.isLastInputText = true;
 		} else {
-			text = " " + text;
+			if(text.length() > 1) {
+				text = " " + text;
+			}
 		}
 		return text;
 	}
