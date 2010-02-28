@@ -11,9 +11,8 @@ Our software is based off of the [Sphinx4 Sphinx-4] speech recognition system, w
 On top of the Sphinx-4 system we have implemented our own Java application.
 
 
-= Details =
+= Pages =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * [Grammar]
+  * [Features]
+  * [FutureExpansion Future Expansion]
