@@ -27,6 +27,8 @@
  public <open> = command open;
  public <exit> = command exit;
  public <flip> = command flip;
+ public <find> = command find;
+ public <next> = command next;
  
  //Demo words
  public <demoWords> = (welcome | to | twelve);
