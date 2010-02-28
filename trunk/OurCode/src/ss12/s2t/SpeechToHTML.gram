@@ -24,6 +24,7 @@
  public <space> = command space;
  
  public <save> = command save;
+ public <open> = command open;
  
  //Demo words
  public <demoWords> = (welcome | to | twelve);
