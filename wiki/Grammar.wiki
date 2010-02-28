@@ -3,16 +3,16 @@
 = Commands =
 
   * Selection
-  The commands {{{begin select}}} and {{{end select}}}.
+    The commands {{{begin select}}} and {{{end select}}}.
   
   * Direction
-  Move the caret either {{{up}}}, {{{down}}}, {{{left}}}, or {{{right}}}.
+    Move the caret either {{{up}}}, {{{down}}}, {{{left}}}, or {{{right}}}.
 
   * Space
-  Adds a {{{space}}}.
+    Adds a {{{space}}}.
 
   * Open/Save
-  Will {{{open}}} a saved file or {{{save}}} what is currently displayed.
+    Will {{{open}}} a saved file or {{{save}}} what is currently displayed.
 
   * Exit
-  Will {{{exit}}} the program.
+    Will {{{exit}}} the program.
