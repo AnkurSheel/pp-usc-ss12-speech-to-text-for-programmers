@@ -31,9 +31,9 @@ public class SickPad extends JFrame implements ActionListener {
 	 */
 
 	private static final long serialVersionUID = 1L;
-	private final String TAG = "tag ";
+	private final String TAG = "open ";
 	private final String COMMAND = "command ";
-	private final String END = "end ";
+	private final String END = "finish ";
 	private final String CAPITAL = "capital ";
 	private final String SPACE = "command space";
 
@@ -224,6 +224,24 @@ public class SickPad extends JFrame implements ActionListener {
 				if(text.equals("new"))
 				{
 					text = "html";
+				} else if (text.equals("ordered"))
+				{
+					text = "ol";
+				} else if (text.equals("item"))
+				{
+					text = "li";
+				} else if (text.equals("paragraph"))
+				{
+					text = "p";
+				} else if (text.equals("break"))
+				{
+					text = "br /";
+				} else if (text.equals("row"))
+				{
+					text = "tr";
+				} else if (text.equals("cell"))
+				{
+					text = "td";
 				}
 				this.StringRecords.add(new DevStruct("TAG",resolveTag(text, 0)));
 				return;
@@ -231,12 +249,32 @@ public class SickPad extends JFrame implements ActionListener {
 		}
 		if (input.length() > END.length()) {
 			typeCheck = input.substring(0, END.length());
-			if (typeCheck.equals("end ")) // Check if it is a tag
+			if (typeCheck.equals(END)) // Check if it is a tag
 			{
 				String text = input.substring(END.length(), input.length());
 				if(text.equals("new"))
 				{
 					text = "html";
+				} else if (text.equals("ordered"))
+				{
+					text = "ol";
+				} else if (text.equals("item"))
+				{
+					text = "li";
+				} else if (text.equals("paragraph"))
+				{
+					text = "p";
+				} else if (text.equals("break"))
+				{
+					text = "br /";
+					this.StringRecords.add(new DevStruct("END",resolveTag(text, 1)));
+					return;
+				} else if (text.equals("row"))
+				{
+					text = "tr";
+				} else if (text.equals("cell"))
+				{
+					text = "td";
 				}
 				
 				this.StringRecords.add(new DevStruct("END",resolveTag("/"+text, 1)));
