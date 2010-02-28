@@ -20,6 +20,7 @@ public class SickPad extends JFrame implements ActionListener {
 	private JTextArea console = new JTextArea(1, 30);
 	// public JTextArea codeBox = new JTextArea(40, 50);
 	//public JTextPane codeBox = new JTextPane();
+	private JPanel pan = new JPanel();
 	public ColorTextPane codeBox = new ColorTextPane();
 
 	private JButton clickClickBoom = new JButton("Click Click Boom!");
@@ -41,30 +42,24 @@ public class SickPad extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE); // set the default close
 		// operation (exit when it
 		// gets closed)
-		this.codeBox.setFont(new Font("Century Gothic", Font.BOLD, 12)); // set
-		// a
-		// default
-		// font
-		// for
-		// the
-		// TextArea
-		this.codeBox.setSize(300, 300);
-		this.codeBox.setMaximumSize(new Dimension(300, 300));
-		this.codeBox.setMinimumSize(new Dimension(300, 300));
-		// this is why we didn't have to worry about the size of the TextArea!
-		// this.getContentPane().setLayout(new BorderLayout()); // the
-		// BorderLayout bit makes it fill it automatically
-		this.clickClickBoom.setSize(80, 40);
-		this.clickClickBoom.setMaximumSize(new Dimension(80, 40));
-
-		this.console.setSize(30, 100);
-		this.getContentPane().setLayout(new FlowLayout());
+		this.codeBox.setFont(new Font("Century Gothic", Font.BOLD, 12)); 
+		
 		clickClickBoom.addActionListener(this);
-
-		this.getContentPane().add(clickClickBoom);
-		this.getContentPane().add(console);
-		this.getContentPane().add(codeBox);
-
+		
+		codeBox.setAutoscrolls(true);
+		console.setBackground(Color.GRAY);
+		console.setForeground(Color.WHITE);
+		
+		pan.setLayout(new BorderLayout());
+		pan.add(console, BorderLayout.CENTER);
+		pan.add(clickClickBoom, BorderLayout.LINE_END);
+		
+		this.getContentPane().setLayout(new BorderLayout());
+		this.getContentPane().setBounds(0,0,800,600);
+		this.getContentPane().setBackground(Color.GRAY);
+		this.getContentPane().add(codeBox, BorderLayout.CENTER);
+		this.getContentPane().add(pan, BorderLayout.PAGE_END);
+		
 		// add our menu bar into the GUI
 		this.setMenuBar(this.menuBar);
 		this.menuBar.add(this.file); // we'll configure this later
