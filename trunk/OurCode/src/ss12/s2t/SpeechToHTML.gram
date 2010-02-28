@@ -1,0 +1,14 @@
+#JSGF V1.0;
+
+/**
+ *	JSGF Grammar for HTML Coding
+ */
+ 
+ grammar html;
+ 
+ <tag> = (new | head | title | body | break | bold | italic);
+ public <newtag> = tag <tag>;
+ public <endtag> = end <tag>;
+ public <delete> = command delete;
+ 
+ public <ourwords> = (welcome | user | S | one | two) *;
