@@ -13,3 +13,7 @@ When a tag is complete, the end tag is indicated by saying {{{finish}}} followed
 There are also some words that are pre-set in the grammar of the program, which may be printed by simply saying them.
 
 Commands, which are listed [Commands here], must be preceded by the {{{command}}} keyword.
+
+= Specification =
+
+The specification of the grammar follows the Java Speech API Grammar Format, which is specified [http://java.sun.com/products/java-media/speech/forDevelopers/JSGF/index.html here].
