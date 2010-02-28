@@ -4,7 +4,12 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.io.*;
 
 public class SickPad extends JFrame implements ActionListener {
@@ -12,6 +17,7 @@ public class SickPad extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 1L;
 	private final String TAG = "tag ";
 	private final String COMMAND = "command ";
@@ -19,15 +25,17 @@ public class SickPad extends JFrame implements ActionListener {
 
 	private JTextArea console = new JTextArea(1, 30);
 	// public JTextArea codeBox = new JTextArea(40, 50);
-	//public JTextPane codeBox = new JTextPane();
+	// public JTextPane codeBox = new JTextPane();
 	private JPanel pan = new JPanel();
 	public ColorTextPane codeBox = new ColorTextPane();
 
 	private JButton clickClickBoom = new JButton("Click Click Boom!");
 
-	private int tagCount = 0;
-	private String indentString = "";
 	private boolean isLastInputText = false;
+
+	// NEW DATA
+	ArrayList<DevStruct> StringRecords = new ArrayList<DevStruct>();
+	
 
 	private MenuBar menuBar = new MenuBar(); // first, create a MenuBar item
 	private Menu file = new Menu(); // our File menu
@@ -42,24 +50,24 @@ public class SickPad extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE); // set the default close
 		// operation (exit when it
 		// gets closed)
-		this.codeBox.setFont(new Font("Century Gothic", Font.BOLD, 12)); 
-		
+		this.codeBox.setFont(new Font("Century Gothic", Font.BOLD, 12));
+
 		clickClickBoom.addActionListener(this);
-		
+
 		codeBox.setAutoscrolls(true);
 		console.setBackground(Color.GRAY);
 		console.setForeground(Color.WHITE);
-		
+
 		pan.setLayout(new BorderLayout());
 		pan.add(console, BorderLayout.CENTER);
 		pan.add(clickClickBoom, BorderLayout.LINE_END);
-		
+
 		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().setBounds(0,0,800,600);
+		this.getContentPane().setBounds(0, 0, 800, 600);
 		this.getContentPane().setBackground(Color.GRAY);
 		this.getContentPane().add(codeBox, BorderLayout.CENTER);
 		this.getContentPane().add(pan, BorderLayout.PAGE_END);
-		
+
 		// add our menu bar into the GUI
 		this.setMenuBar(this.menuBar);
 		this.menuBar.add(this.file); // we'll configure this later
@@ -80,11 +88,11 @@ public class SickPad extends JFrame implements ActionListener {
 		// time for the repetitive stuff. let's add the "Open" option
 		this.openFile.setLabel("Open"); // set the label of the menu item
 		this.openFile.addActionListener(this); // add an action listener (so we
-												// know when it's been clicked
+		// know when it's been clicked
 		this.openFile.setShortcut(new MenuShortcut(KeyEvent.VK_O, false)); // set
-																			// a
-																			// keyboard
-																			// shortcut
+		// a
+		// keyboard
+		// shortcut
 		this.file.add(this.openFile); // add it to the "File" menu
 
 		// and the save...
@@ -114,17 +122,17 @@ public class SickPad extends JFrame implements ActionListener {
 		// if the source was the "open" option
 		else if (e.getSource() == this.openFile) {
 			JFileChooser open = new JFileChooser(); // open up a file chooser (a
-													// dialog for the user to
-													// browse files to open)
+			// dialog for the user to
+			// browse files to open)
 			int option = open.showOpenDialog(this); // get the option that the
-													// user selected (approve or
-													// cancel)
+			// user selected (approve or
+			// cancel)
 			// NOTE: because we are OPENing a file, we call showOpenDialog~
 			// if the user clicked OK, we have "APPROVE_OPTION"
 			// so we want to open the file
 			if (option == JFileChooser.APPROVE_OPTION) {
 				this.codeBox.setText(""); // clear the TextArea before applying
-											// the file contents
+				// the file contents
 				try {
 					// create a scanner to read the file
 					// (getSelectedFile().getPath() will get the path to the
@@ -145,9 +153,9 @@ public class SickPad extends JFrame implements ActionListener {
 		// and lastly, if the source of the event was the "save" option
 		else if (e.getSource() == this.saveFile) {
 			JFileChooser save = new JFileChooser(); // again, open a file
-													// chooser
+			// chooser
 			int option = save.showSaveDialog(this); // similar to the open file,
-													// only this time we call
+			// only this time we call
 			// showSaveDialog instead of showOpenDialog
 			// if the user clicked OK (and not cancel)
 			if (option == JFileChooser.APPROVE_OPTION) {
@@ -156,8 +164,8 @@ public class SickPad extends JFrame implements ActionListener {
 					BufferedWriter out = new BufferedWriter(new FileWriter(save
 							.getSelectedFile().getPath()));
 					out.write(this.codeBox.getText()); // write the contents of
-														// the TextArea to the
-														// file
+					// the TextArea to the
+					// file
 					out.close(); // close the file stream
 				} catch (Exception ex) { // again, catch any exceptions and...
 					// ...write to the debug console
@@ -169,44 +177,40 @@ public class SickPad extends JFrame implements ActionListener {
 		else if (e.getSource() == this.clickClickBoom) {
 			String input = this.console.getText();
 			processRawText(input);
+
+			codeBox.setText("");
+			for(int i=0;i<StringRecords.size();i++)
+			{
+				codeBox.append(Color.BLACK,StringRecords.get(i).value);
+			}
 		}
 	}
 
 	public void processRawText(String input) {
+
+		this.transferFocus();
+
 		String typeCheck = "";
-		String codeBoxText = this.codeBox.getText();
 		// check for tags
-		if (input.length() > TAG.length()) 
-		{
+		if (input.length() > TAG.length()) {
 			typeCheck = input.substring(0, TAG.length());
 			if (typeCheck.equals(TAG)) // Check if it is a tag
 			{
-				//this.codeBox.setText(codeBoxText
-				//		+ resolveTag(input.substring(TAG.length(), input
-				//				.length()), 0));
-				this.codeBox.append(Color.blue, resolveTag(input.substring(TAG.length(), input
-								.length()), 0));
+				this.StringRecords.add(new DevStruct("TAG",resolveTag(input.substring(TAG.length(), input.length()), 0)));
 				return;
 			}
 		}
-		if (input.length() > END.length()) 
-		{
+		if (input.length() > END.length()) {
 			typeCheck = input.substring(0, END.length());
 			if (typeCheck.equals("end ")) // Check if it is a tag
 			{
-				//this.codeBox.setText(codeBoxText
-				//		+ resolveTag("/"
-				//				+ input.substring(END.length(), input
-				//						.length()), 1));
-				this.codeBox.append(Color.blue, resolveTag("/"+input.substring(END.length(), input
-						.length()), 1));
+				this.StringRecords.add(new DevStruct("END",resolveTag("/"+input.substring(END.length(), input.length()), 1)));
 				return;
 			}
 		}
 
 		// check for command
-		if (input.length() > COMMAND.length()) 
-		{
+		if (input.length() > COMMAND.length()) {
 			typeCheck = input.substring(0, COMMAND.length());
 
 			if (typeCheck.equals(COMMAND)) // Check if it is a tag
@@ -215,13 +219,11 @@ public class SickPad extends JFrame implements ActionListener {
 				return;
 			}
 		}
-		// seems like its just the text
-		//this.codeBox.setText(codeBoxText + resolveText(input));
-		this.codeBox.append(Color.BLACK, resolveText(input));
+		this.StringRecords.add(new DevStruct("TXT",resolveText(input)));
 	}
 
 	public void sound2Text(String input) {
-		processRawText(input);
+		// processRawText(input);
 	}
 
 	public void resolveCommand(String cmd) {
@@ -230,9 +232,9 @@ public class SickPad extends JFrame implements ActionListener {
 		} else if (cmd.equals("down")) {
 
 		} else if (cmd.equals("left")) {
-
+			codeBox.setCaretPosition(codeBox.getCaretPosition() - 1);
 		} else if (cmd.equals("right")) {
-
+			codeBox.setCaretPosition(codeBox.getCaretPosition() + 1);
 		} else if (cmd.equals("clear")) {
 			this.codeBox.setText("");
 		}
@@ -240,7 +242,6 @@ public class SickPad extends JFrame implements ActionListener {
 
 	public String resolveText(String text) {
 		if (this.isLastInputText == false) {
-			text = indentString + text;
 			this.isLastInputText = true;
 		} else {
 			text = " " + text;
@@ -252,22 +253,6 @@ public class SickPad extends JFrame implements ActionListener {
 	{
 		this.isLastInputText = false;
 		text = "<" + text + ">";
-
-		if (tagType == 0)
-			text = indentString + text;
-
-		indentString = "\n";
-		if (tagType == 0)
-			tagCount++;
-		else
-			tagCount--;
-
-		for (int i = 0; i < tagCount; i++)
-			indentString += "\t";
-
-		if (tagType == 1)
-			text = indentString + text;
-
 		return text;
 	}
 }
