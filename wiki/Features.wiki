@@ -5,7 +5,7 @@
     The user is able to move the caret up and down through speech-based commands.
 
   * *Deletion/Backspace*
-    The user is able to delete text that has been typed or an entire tag (as applicable) by using the delete command.
+    The user is able to delete text that has been typed or an entire tag (as applicable) by using the delete [Commands command].
 
   * *Automatic Hyperlinks*
     The user is able to easily insert a hyperlink to a site by using a command, removing the necessity of spelling out the actual HTML tag.
