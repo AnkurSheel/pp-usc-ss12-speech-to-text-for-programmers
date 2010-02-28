@@ -190,16 +190,21 @@ public class SickPad extends JFrame implements ActionListener {
 			String input = this.console.getText();
 			processRawText(input);
 
-			codeBox.setText("");
-			codeBox.Reset();
-			for (int i = 0; i < StringRecords.size(); i++) {
-				codeBox.append(StringRecords.get(i).key, StringRecords.get(i).value);
-				if (cursorPosition > 1) {
-					codeBox.setCaretPosition(cursorPosition);
-				}
-				
-			}
+			displayText();
 		}
+	}
+
+	public void displayText() {
+		codeBox.setText("");
+		codeBox.Reset();
+		for (int i = 0; i < StringRecords.size(); i++) {
+			codeBox.append(StringRecords.get(i).key, StringRecords.get(i).value);
+		}
+			//if (cursorPosition > 1) {
+			//	codeBox.setCaretPosition(cursorPosition);
+			//}
+			
+		
 	}
 
 	public void processRawText(String input) {
@@ -267,14 +272,7 @@ public class SickPad extends JFrame implements ActionListener {
 		/*if(true)
 		return;*/
 		processRawText(input);
-		codeBox.setText("");
-		codeBox.Reset();
-		for (int i = 0; i < StringRecords.size(); i++) {
-			codeBox.append(StringRecords.get(i).key, StringRecords.get(i).value);
-			if (cursorPosition > 1) {
-				codeBox.setCaretPosition(cursorPosition);
-			}
-		}
+		displayText();
 	}
 
 	public void resolveCommand(String cmd) {
@@ -283,13 +281,15 @@ public class SickPad extends JFrame implements ActionListener {
 		} else if (cmd.equals("down")) {
 
 		} else if (cmd.equals("left")) {
+			displayText();	
 			if (codeBox.getCaretPosition() > 1) {
 				cursorPosition = codeBox.getCaretPosition() - 1;
-				codeBox.setCaretPosition(codeBox.getCaretPosition() - 1);
+				codeBox.setCaretPosition(cursorPosition - 1);
 			}
 		} else if (cmd.equals("right")) {
+			displayText();
 			cursorPosition = codeBox.getCaretPosition() + 1;
-			codeBox.setCaretPosition(codeBox.getCaretPosition() + 1);
+			codeBox.setCaretPosition(cursorPosition + 1);
 		} else if (cmd.equals("clear")) {
 			this.codeBox.setText("");
 			this.StringRecords.clear();
