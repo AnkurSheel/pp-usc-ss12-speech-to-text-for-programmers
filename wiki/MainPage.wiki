@@ -13,7 +13,7 @@ On top of the Sphinx-4 system we have implemented our own Java application.
 
 = Pages =
 
+  * [Implementation]
   * [Grammar]
   * [Features]
   * [FutureExpansion Future Expansion]
-  * [Implementation]
