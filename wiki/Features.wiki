@@ -1,11 +1,4 @@
-#summary This page describes the features that have been implemented in this program.
-
-= Introduction =
-
-Add your content here.
-
-
-= Details =
+= Feature List =
 
   * *Up/Down Navigation*
     The user is able to move the caret up and down through speech-based commands.
