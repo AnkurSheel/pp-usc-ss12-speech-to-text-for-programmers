@@ -264,6 +264,8 @@ public class SickPad extends JFrame implements ActionListener {
 	}
 
 	public void sound2Text(String input) {
+		/*if(true)
+		return;*/
 		processRawText(input);
 		codeBox.setText("");
 		codeBox.Reset();
@@ -290,12 +292,11 @@ public class SickPad extends JFrame implements ActionListener {
 			codeBox.setCaretPosition(codeBox.getCaretPosition() + 1);
 		} else if (cmd.equals("clear")) {
 			this.codeBox.setText("");
+			this.StringRecords.clear();
 		}
 		else if (cmd.equals("back")) 
 		{
-			String text = this.codeBox.getText();
-			text = text.substring(0,text.length()-1);
-			this.codeBox.setText(text);
+			this.StringRecords.remove(StringRecords.size()-1);
 		}
 		else if (cmd.equals("delete")) 
 		{
