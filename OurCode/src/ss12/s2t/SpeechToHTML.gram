@@ -18,10 +18,10 @@
  
  public <movement> = command (up | down | left | right);
  
- public <space> = space;
+ public <space> = command space;
  
  public <save> = command save;
  
  //Demo words
- public <demoWords> = (welcome | to);
+ public <demoWords> = (welcome | to | twelve);
  
