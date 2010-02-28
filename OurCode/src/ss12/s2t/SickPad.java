@@ -15,7 +15,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -66,7 +65,6 @@ public class SickPad extends JFrame implements ActionListener {
 		// operation (exit when it
 		// gets closed)
 		this.codeBox.setFont(new Font("Century Gothic", Font.BOLD, 12));
-		this.codeBox.setEditable(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		clickClickBoom.addActionListener(this);
@@ -84,7 +82,6 @@ public class SickPad extends JFrame implements ActionListener {
 		this.getContentPane().setBackground(Color.GRAY);
 		this.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		this.getContentPane().add(pan, BorderLayout.PAGE_END);
-		
 
 		// add our menu bar into the GUI
 		this.setMenuBar(this.menuBar);
@@ -419,7 +416,7 @@ public class SickPad extends JFrame implements ActionListener {
 			this.isLastInputText = true;
 		} else {
 			if(text.length() > 1) {
-				text = " " + text;
+				text = text + " ";
 			}
 		}
 		return text;
@@ -427,50 +424,8 @@ public class SickPad extends JFrame implements ActionListener {
 
 	public String resolveTag(String text, int tagType) // 0 for start, 1 for end
 	{
-		StringTokenizer st = new StringTokenizer(text);
-		if(st.nextToken().equalsIgnoreCase("link"))
-		{
-			String link = st.nextToken();
-			String strLink = "";
-			String strTxt = "";
-			if(link.equalsIgnoreCase("yahoo"))
-			{
-				strLink = "www.yahoo.com";
-				strTxt = resolveHref(st.nextToken());
-			}
-			else if (link.equalsIgnoreCase("google")){
-				strLink = "www.google.com";
-				strTxt = resolveHref(st.nextToken());
-			}
-			else if (link.equalsIgnoreCase("you")){
-				strLink = "www.youtube.com";
-				st.nextToken();
-				strTxt = resolveHref(st.nextToken());
-			}
-			else if (link.equalsIgnoreCase("project")){
-				strLink = "www.projectpossibility.org";
-				st.nextToken();
-				strTxt = resolveHref(st.nextToken());
-			}			
-			text = "<a href=\""+strLink+"\">"+strTxt+"</a>";
-			return text;
-		}
-		else {
 		this.isLastInputText = false;
 		text = "<" + text + ">";
-		}
 		return text;
-	}
-	
-	private String resolveHref(String txt)
-	{
-		String strTxt = "";
-		if(txt.equalsIgnoreCase("my")){
-			strTxt = "mylink";
-		}
-		else if(txt.equalsIgnoreCase("website")){
-			strTxt = "website";
-		}
-		return strTxt;
 	}
 }
