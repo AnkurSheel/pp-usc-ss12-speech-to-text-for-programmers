@@ -9,6 +9,10 @@ import java.io.*;
 
 public class SickPad extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String TAG = "tag ";
 	private final String COMMAND = "command ";
 	private final String END = "end ";
@@ -177,9 +181,9 @@ public class SickPad extends JFrame implements ActionListener {
 		String typeCheck = "";
 		String codeBoxText = this.codeBox.getText();
 		// check for tags
-		if (input.length() > TAG.length()) {
+		if (input.length() > TAG.length()) 
+		{
 			typeCheck = input.substring(0, TAG.length());
-
 			if (typeCheck.equals(TAG)) // Check if it is a tag
 			{
 				//this.codeBox.setText(codeBoxText
@@ -188,20 +192,26 @@ public class SickPad extends JFrame implements ActionListener {
 				this.codeBox.append(Color.blue, resolveTag(input.substring(TAG.length(), input
 								.length()), 0));
 				return;
-			} else if (typeCheck.equals("end ")) // Check if it is a tag
+			}
+		}
+		if (input.length() > END.length()) 
+		{
+			typeCheck = input.substring(0, END.length());
+			if (typeCheck.equals("end ")) // Check if it is a tag
 			{
 				//this.codeBox.setText(codeBoxText
 				//		+ resolveTag("/"
 				//				+ input.substring(END.length(), input
 				//						.length()), 1));
-				this.codeBox.append(Color.blue, resolveTag(input.substring(END.length(), input
-						.length()), 0));
+				this.codeBox.append(Color.blue, resolveTag("/"+input.substring(END.length(), input
+						.length()), 1));
 				return;
 			}
 		}
 
 		// check for command
-		if (input.length() > COMMAND.length()) {
+		if (input.length() > COMMAND.length()) 
+		{
 			typeCheck = input.substring(0, COMMAND.length());
 
 			if (typeCheck.equals(COMMAND)) // Check if it is a tag
