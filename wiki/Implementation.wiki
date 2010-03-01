@@ -1,4 +1,4 @@
-#summary This page describes the method by which this program was implemented.
+#summary This page describes the method by which this program is implemented.
 
 = System Walkthrough =
 
