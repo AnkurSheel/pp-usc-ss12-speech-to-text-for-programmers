@@ -21,3 +21,6 @@
 
   * *Color*
     The background and font colors change to a new theme.
+
+  * *Intelligent Grammar*
+    Intelligent grammar that determines itself when to search for certain forms of input based on context. 
