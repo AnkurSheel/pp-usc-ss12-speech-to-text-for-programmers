@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -37,6 +38,7 @@ public class SickPad extends JFrame implements ActionListener {
 	private final String END = "finish ";
 	private final String CAPITAL = "capital ";
 	private final String SPACE = "command space";
+	private final String LINK = "link";
 
 	private JTextArea console = new JTextArea(1, 30);
 	// public JTextArea codeBox = new JTextArea(40, 50);
@@ -236,6 +238,17 @@ public class SickPad extends JFrame implements ActionListener {
 			typeCheck = input.substring(0, TAG.length());
 			if (typeCheck.equals(TAG)) // Check if it is a tag
 			{
+				// Processing Hyperlinks
+				// eg: TAG link project possibility my link
+				StringTokenizer st = new StringTokenizer(input);
+				String strLink = st.nextToken();
+				strLink = st.nextToken();
+				if (strLink.equalsIgnoreCase("link")) {
+					strLink = resolveHref(input);
+					this.StringRecords.add(new DevStruct("LINK", strLink));
+					return;
+				}
+				
 				String text = input.substring(TAG.length(), input.length());
 				if (text.equals("new")) {
 					text = "html";
@@ -316,9 +329,10 @@ public class SickPad extends JFrame implements ActionListener {
 	}
 
 	public void sound2Text(String input) {
-		/*
-		 * if(true) return;
-		 */
+
+		if (true)
+			return;
+
 		processRawText(input);
 		displayText();
 	}
@@ -437,5 +451,42 @@ public class SickPad extends JFrame implements ActionListener {
 		this.isLastInputText = false;
 		text = "<" + text + ">";
 		return text;
+	}
+
+	private String resolveHref(String text) {
+		StringTokenizer st = new StringTokenizer(text);
+		st.nextToken();
+		if (st.nextToken().equalsIgnoreCase("link")) {
+			String link = st.nextToken();
+			String strLink = "";
+			String strTxt = "";
+			if (link.equalsIgnoreCase("yahoo")) {
+				strLink = "www.yahoo.com";
+				strTxt = hrefHelper(st.nextToken());
+			} else if (link.equalsIgnoreCase("google")) {
+				strLink = "www.google.com";
+				strTxt = hrefHelper(st.nextToken());
+			} else if (link.equalsIgnoreCase("you")) {
+				strLink = "www.youtube.com";
+				st.nextToken();
+				strTxt = hrefHelper(st.nextToken());
+			} else if (link.equalsIgnoreCase("project")) {
+				strLink = "www.projectpossibility.org";
+				st.nextToken();
+				strTxt = hrefHelper(st.nextToken());
+			}
+			text = "<a href=\"" + strLink + "\">" + strTxt + "</a>";
+		}
+		return text;
+	}
+
+	private String hrefHelper(String txt) {
+		String strTxt = "";
+		if (txt.equalsIgnoreCase("my")) {
+			strTxt = "mylink";
+		} else if (txt.equalsIgnoreCase("website")) {
+			strTxt = "website";
+		}
+		return strTxt;
 	}
 }
