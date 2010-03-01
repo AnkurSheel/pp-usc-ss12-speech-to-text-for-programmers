@@ -256,6 +256,8 @@ public class SickPad extends JFrame implements ActionListener {
 					text = "ol";
 				} else if (text.equals("item")) {
 					text = "li";
+				} else if (text.equals("bold")) {
+					text = "b";
 				} else if (text.equals("paragraph")) {
 					text = "p";
 				} else if (text.equals("break")) {
@@ -281,6 +283,8 @@ public class SickPad extends JFrame implements ActionListener {
 					text = "ol";
 				} else if (text.equals("item")) {
 					text = "li";
+				} else if (text.equals("bold")) {
+					text = "b";
 				} else if (text.equals("paragraph")) {
 					text = "p";
 				} else if (text.equals("break")) {
