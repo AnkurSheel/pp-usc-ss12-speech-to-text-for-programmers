@@ -1,0 +1,35 @@
+#JSGF V1.0;
+
+/**
+ *	JSGF Grammar for HTML Coding
+ */
+ 
+ grammar html;
+ 
+ <tag> = (new | head | title | body | break | bold | center | ordered | item | paragraph | table | row | cell );
+ public <newtag> = open <tag>;
+ public <endtag> = finish <tag>;
+ public <delete> = command back;
+ public <newline> = command new line;
+ public <linktag> = open link <link> <text>;
+ <link> = (yahoo | project possibility | you tube );
+ <text> = (my link | website);
+ 
+ public <letters> = [ capital ] (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z);
+  
+ public <select> = command select;
+ 
+ public <movement> = command (up | down | left | right);
+ 
+ public <space> = command space;
+ 
+ public <save> = command save;
+ public <open> = command open;
+ public <exit> = command exit;
+ public <flip> = command flip;
+ public <find> = command find;
+ public <next> = command next;
+ 
+ //Demo words
+ public <demoWords> = (welcome | to | twelve);
+ 
