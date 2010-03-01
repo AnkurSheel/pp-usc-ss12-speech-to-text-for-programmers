@@ -16,6 +16,7 @@ public class ColorTextPane extends JTextPane {
 	Style tagStyle;
 	Style mainStyle;
 	Style defaultStyle;
+	Style linkStyle;
 	int TagCount;
 	int LineNo;
 	int ThemeNo;
@@ -36,7 +37,9 @@ public class ColorTextPane extends JTextPane {
 
 		tagStyle = sc.addStyle("Heading2", defaultStyle);
 		StyleConstants.setForeground(tagStyle, Color.blue);
-		
+
+		linkStyle = sc.addStyle("link", defaultStyle);
+		StyleConstants.setForeground(linkStyle, Color.red);
 		ThemeNo = 0;	
 		TagCount = 0;
 	}
@@ -66,13 +69,27 @@ public class ColorTextPane extends JTextPane {
 			setCaretPosition(len);
 			setCharacterAttributes(tagStyle, false);
 			replaceSelection(Value);
-		} else {
+		} else if(key.equalsIgnoreCase("LINK"))
+		{
+			LineNo++;
+			String indentString = "\r\n"+LineNo;
+			for (int i = 0; i < TagCount; i++) {
+				indentString += "\t";
+			}
+			Value = indentString + Value;
+			//System.out.println(TagCount + " " + Value);
+			int len = getDocument().getLength();
+			setCaretPosition(len);
+			setCharacterAttributes(linkStyle, false);
+			replaceSelection(Value);
+		}
+		else{
 			int len = getDocument().getLength();
 			setCaretPosition(len);
 			setCharacterAttributes(mainStyle, false);
 			replaceSelection(Value);
 		}
-		if (key.equalsIgnoreCase("TAG")) {
+		if (key.equalsIgnoreCase("TAG") || key.equalsIgnoreCase("LINK")) {
 			TagCount++;
 		
 		}
@@ -93,16 +110,19 @@ public class ColorTextPane extends JTextPane {
 			setBackground(Color.white);
 			StyleConstants.setForeground(mainStyle, Color.black);
 			StyleConstants.setForeground(tagStyle, Color.blue);
+			StyleConstants.setForeground(linkStyle, Color.red);
 			break;
 		case 1:
 			setBackground(Color.blue);
 			StyleConstants.setForeground(mainStyle, Color.white);
 			StyleConstants.setForeground(tagStyle, Color.orange);
+			StyleConstants.setForeground(linkStyle, Color.MAGENTA);
 			break;
 		case 2:
 			setBackground(Color.black);
 			StyleConstants.setForeground(mainStyle, Color.orange);
 			StyleConstants.setForeground(tagStyle, Color.red);
+			StyleConstants.setForeground(linkStyle, Color.white);
 			break;
 		}
 			
