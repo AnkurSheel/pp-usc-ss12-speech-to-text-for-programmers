@@ -1,10 +1,7 @@
 #summary This page lists the features implemented.
 = Feature List =
 
-  * *Up/Down Navigation*
-    The user is able to move the caret up and down through speech-based commands.
-
-  * *Deletion/Backspace*
+  * *Deletion*
     The user is able to delete text that has been typed or an entire tag (as applicable) by using the delete [Commands command].
 
   * *Automatic Hyperlinks*
@@ -21,3 +18,6 @@
 
   * *Syntax Highlighting*
     Tags will be distinguished from surrounding text by identifying colors.
+
+  * *Color*
+    The background and font colors change to a new theme.
