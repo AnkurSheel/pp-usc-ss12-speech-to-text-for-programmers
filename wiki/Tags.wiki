@@ -18,7 +18,7 @@
     Generates the {{{<BR />}}} tag.
 
   * Bold
-    Generates the {{{<BOLD>}}} or {{{</BOLD>}}} tags.
+    Generates the {{{<B>}}} or {{{</B>}}} tags.
 
   * Center
     Generates the {{{<CENTER>}}} or {{{</CENTER>}}} tags.
