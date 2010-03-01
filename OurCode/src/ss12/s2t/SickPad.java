@@ -431,6 +431,10 @@ public class SickPad extends JFrame implements ActionListener {
 		} else if (cmd.equals("exit")) {
 			System.exit(1);
 		}
+		else if (cmd.equals("flip"))
+		{			
+			codeBox.ChangeTheme1();
+		}
 	}
 
 	public String resolveText(String text) {
