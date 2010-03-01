@@ -343,12 +343,12 @@ public class SickPad extends JFrame implements ActionListener {
 			displayText();
 			if (codeBox.getCaretPosition() > 1) {
 				cursorPosition = codeBox.getCaretPosition() - 1;
-				codeBox.setCaretPosition(cursorPosition - 1);
+				codeBox.setCaretPosition(cursorPosition);
 			}
 		} else if (cmd.equals("right")) {
 			displayText();
 			cursorPosition = codeBox.getCaretPosition() + 1;
-			codeBox.setCaretPosition(cursorPosition + 1);
+			codeBox.setCaretPosition(cursorPosition);
 		} else if (cmd.equals("select")) {
 			if (this.isSelectMode == false) {
 				this.isSelectMode = true;
