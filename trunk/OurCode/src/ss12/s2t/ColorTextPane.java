@@ -13,11 +13,12 @@ import javax.swing.text.StyledDocument;
 public class ColorTextPane extends JTextPane {
 
 	StyleContext sc;
-	Style heading2Style;
+	Style tagStyle;
 	Style mainStyle;
 	Style defaultStyle;
 	int TagCount;
 	int LineNo;
+	int ThemeNo;
 	
 	public ColorTextPane() {
 		super();
@@ -33,8 +34,10 @@ public class ColorTextPane extends JTextPane {
 		// StyleConstants.setLeftIndent(mainStyle, 8);
 		// StyleConstants.setFirstLineIndent(mainStyle, 0);
 
-		heading2Style = sc.addStyle("Heading2", defaultStyle);
-		StyleConstants.setForeground(heading2Style, Color.blue);
+		tagStyle = sc.addStyle("Heading2", defaultStyle);
+		StyleConstants.setForeground(tagStyle, Color.blue);
+		
+		ThemeNo = 0;	
 		TagCount = 0;
 	}
 
@@ -61,7 +64,7 @@ public class ColorTextPane extends JTextPane {
 			//System.out.println(TagCount + " " + Value);
 			int len = getDocument().getLength();
 			setCaretPosition(len);
-			setCharacterAttributes(heading2Style, false);
+			setCharacterAttributes(tagStyle, false);
 			replaceSelection(Value);
 		} else {
 			int len = getDocument().getLength();
@@ -80,12 +83,30 @@ public class ColorTextPane extends JTextPane {
 		TagCount = 0;
 		LineNo = 0;
 	}
-	// StyleContext sc = StyleContext.getDefaultStyleContext();
-	// AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
-	// StyleConstants.Foreground, c);
-	//
-	// int len = getDocument().getLength();
-	// setCaretPosition(len);
-	// setCharacterAttributes(aset, false);
-	// replaceSelection(s);
+	
+	public void ChangeTheme1()
+	{
+		ThemeNo = (ThemeNo+1)%3;
+		switch(ThemeNo)
+		{
+		case 0:
+			setBackground(Color.white);
+			StyleConstants.setForeground(mainStyle, Color.black);
+			StyleConstants.setForeground(tagStyle, Color.blue);
+			break;
+		case 1:
+			setBackground(Color.blue);
+			StyleConstants.setForeground(mainStyle, Color.white);
+			StyleConstants.setForeground(tagStyle, Color.orange);
+			break;
+		case 2:
+			setBackground(Color.black);
+			StyleConstants.setForeground(mainStyle, Color.orange);
+			StyleConstants.setForeground(tagStyle, Color.red);
+			break;
+		}
+			
+		//StyleConstants.setBackground(heading2Style, Color.blue);
+		
+	}
 }
