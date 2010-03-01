@@ -46,7 +46,7 @@ public class SickPad extends JFrame implements ActionListener {
 	public JScrollPane scrollPane = new JScrollPane(codeBox);
 	private JButton clickClickBoom = new JButton("Click Click Boom!");
 
-	private boolean isLastInputText = false;
+	private boolean isLastInputText = true;
 	private boolean isSelectMode = false;
 	private int selectStart = 0;
 	private int selectEnd = 0;
@@ -254,7 +254,6 @@ public class SickPad extends JFrame implements ActionListener {
 				}
 				this.StringRecords
 						.add(new DevStruct("TAG", resolveTag(text, 0)));
-				cursorPosition = codeBox.getCaretPosition();
 				return;
 			}
 		}
