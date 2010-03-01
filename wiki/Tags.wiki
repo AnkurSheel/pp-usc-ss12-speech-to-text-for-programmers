@@ -33,4 +33,4 @@
     Generates the {{{<P>}}} or {{{</P>}}} tags.
 
   * Link
-    Generates a link following this syntax: {{{open link [URL] [Name to Display]}}}
+    Generates a link following this syntax: {{{open link [URL] [Name to Display]}}} (both must be in the [Grammar grammar])
