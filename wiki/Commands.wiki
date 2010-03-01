@@ -5,6 +5,9 @@
   * Selection
     The commands {{{begin select}}} and {{{end select}}}.
 
+  * Delete
+    The command {{{back}}} will remove the previous thing that was entered (either a tag or a letter).
+
   * Color
     The command {{{flip}}} will change the colors of the background and text.
   
