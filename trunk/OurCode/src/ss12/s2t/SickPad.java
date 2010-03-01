@@ -239,23 +239,17 @@ public class SickPad extends JFrame implements ActionListener {
 				String text = input.substring(TAG.length(), input.length());
 				if (text.equals("new")) {
 					text = "html";
-				} else if (text.equals("ordered"))
-				{
+				} else if (text.equals("ordered")) {
 					text = "ol";
-				} else if (text.equals("item"))
-				{
+				} else if (text.equals("item")) {
 					text = "li";
-				} else if (text.equals("paragraph"))
-				{
+				} else if (text.equals("paragraph")) {
 					text = "p";
-				} else if (text.equals("break"))
-				{
+				} else if (text.equals("break")) {
 					text = "br /";
-				} else if (text.equals("row"))
-				{
+				} else if (text.equals("row")) {
 					text = "tr";
-				} else if (text.equals("cell"))
-				{
+				} else if (text.equals("cell")) {
 					text = "td";
 				}
 				this.StringRecords
@@ -270,25 +264,20 @@ public class SickPad extends JFrame implements ActionListener {
 				String text = input.substring(END.length(), input.length());
 				if (text.equals("new")) {
 					text = "html";
-				} else if (text.equals("ordered"))
-				{
+				} else if (text.equals("ordered")) {
 					text = "ol";
-				} else if (text.equals("item"))
-				{
+				} else if (text.equals("item")) {
 					text = "li";
-				} else if (text.equals("paragraph"))
-				{
+				} else if (text.equals("paragraph")) {
 					text = "p";
-				} else if (text.equals("break"))
-				{
+				} else if (text.equals("break")) {
 					text = "br /";
-					this.StringRecords.add(new DevStruct("END",resolveTag(text, 1)));
+					this.StringRecords.add(new DevStruct("END", resolveTag(
+							text, 1)));
 					return;
-				} else if (text.equals("row"))
-				{
+				} else if (text.equals("row")) {
 					text = "tr";
-				} else if (text.equals("cell"))
-				{
+				} else if (text.equals("cell")) {
 					text = "td";
 				}
 
@@ -347,29 +336,26 @@ public class SickPad extends JFrame implements ActionListener {
 			}
 		} else if (cmd.equals("right")) {
 			displayText();
-			cursorPosition = codeBox.getCaretPosition() + 1;
+			if (cursorPosition < codeBox.getDocument().getLength() - 1) {
+				cursorPosition = codeBox.getCaretPosition() + 1;
+			}
 			codeBox.setCaretPosition(cursorPosition);
 		} else if (cmd.equals("select")) {
 			if (this.isSelectMode == false) {
 				this.isSelectMode = true;
 				this.selectStart = this.codeBox.getCaretPosition();
-			}
-			else
+			} else
 				this.isSelectMode = false;
 		} else if (cmd.equals("clear")) {
 			this.codeBox.setText("");
 			this.StringRecords.clear();
-		}
-		else if (cmd.equals("back")) 
-		{
-			if(StringRecords.size()>0)
-			{
-				this.StringRecords.remove(StringRecords.size()-1);	
+		} else if (cmd.equals("back")) {
+			if (StringRecords.size() > 0) {
+				this.StringRecords.remove(StringRecords.size() - 1);
+				cursorPosition = codeBox.getCaretPosition();
 			}
-			
-		}
-		else if (cmd.equals("delete")) 
-		{
+
+		} else if (cmd.equals("delete")) {
 			String text = this.codeBox.getText();
 			int index = text.lastIndexOf('\r');
 			if (index > -1) {
@@ -430,9 +416,7 @@ public class SickPad extends JFrame implements ActionListener {
 			}
 		} else if (cmd.equals("exit")) {
 			System.exit(1);
-		}
-		else if (cmd.equals("flip"))
-		{			
+		} else if (cmd.equals("flip")) {
 			codeBox.ChangeTheme1();
 		}
 	}
