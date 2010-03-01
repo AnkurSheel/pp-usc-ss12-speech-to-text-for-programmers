@@ -329,10 +329,6 @@ public class SickPad extends JFrame implements ActionListener {
 	}
 
 	public void sound2Text(String input) {
-
-		if (true)
-			return;
-
 		processRawText(input);
 		displayText();
 	}
@@ -419,7 +415,13 @@ public class SickPad extends JFrame implements ActionListener {
 					// create a buffered writer to write to a file
 					BufferedWriter out = new BufferedWriter(new FileWriter(save
 							.getSelectedFile().getPath()));
-					out.write(this.codeBox.getText()); // write the contents of
+					String outputText = "";
+					for(int i=0;i<this.StringRecords.size();i++)
+					{
+					outputText+=StringRecords.get(i).value;	
+					}
+					out.write(outputText);
+					//out.write(this.codeBox.getText()); // write the contents of
 					// the TextArea to the
 					// file
 					out.close(); // close the file stream
