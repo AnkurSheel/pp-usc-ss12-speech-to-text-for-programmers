@@ -31,3 +31,6 @@
 
   * Paragraph
     Generates the {{{<P>}}} or {{{</P>}}} tags.
+
+  * Link
+    Generates a link following this syntax: {{{open link [URL] [Name to Display]
