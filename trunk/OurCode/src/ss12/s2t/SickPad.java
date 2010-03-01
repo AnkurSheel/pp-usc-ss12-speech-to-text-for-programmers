@@ -254,6 +254,7 @@ public class SickPad extends JFrame implements ActionListener {
 				}
 				this.StringRecords
 						.add(new DevStruct("TAG", resolveTag(text, 0)));
+				cursorPosition = codeBox.getCaretPosition();
 				return;
 			}
 		}
