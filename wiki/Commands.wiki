@@ -3,7 +3,7 @@
 = Commands =
 
   * Selection
-    The commands {{{begin select}}} and {{{end select}}}.
+    The command {{{select}}} will begin and end a selection mode that can be controlled with the direction commands.
 
   * Delete
     The command {{{back}}} will remove the previous thing that was entered (either a tag or a letter).
